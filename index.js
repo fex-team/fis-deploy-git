@@ -55,6 +55,7 @@ module.exports = function (files, settings, callback) {
 
     exec('git checkout ' + conf.branch, {silent: conf.silent});
     exec('git reset --hard HEAD^', {silent: conf.silent});
+    exec('git pull', {silent: conf.silent});
     files.forEach(function(fileInfo){
         var file = fileInfo.file;
         if(!file.release){
