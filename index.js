@@ -46,6 +46,7 @@ module.exports = function (files, settings, callback) {
 
     if (exec('git status ' + tmp, {silent: conf.silent}).code !== 0){
         cd('/..');
+        fis.util.del(tmp);
         if (exec('git clone ' + conf.remote + ' ' + tmp).code !== 0){
             fis.log.error('git clone failed');
         }
@@ -64,7 +65,7 @@ module.exports = function (files, settings, callback) {
                 + ']: Maybe this file is neither in current project or releasable');
         }
         var name = tmp + (fileInfo.dest.to || '/') + fileInfo.dest.release;
-        fis.util.write(name, file.getContent());
+        fis.util.write(name, fileInfo.content);
     });
     exec('git add -A', {silent: conf.silent});
     exec('git status', {silent: conf.deepSilent});
