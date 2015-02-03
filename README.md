@@ -26,7 +26,8 @@ fis.config.set('settings.deploy.git', {
         from : '/',
         to: '/',
         remote: 'https://github.com/hefangshi/git-deploy-test.git',
-        branch: 'gh-pages'
+        branch: 'gh-pages',
+        clean: false
     }
 });
 ```
