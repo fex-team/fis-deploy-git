@@ -34,7 +34,7 @@ module.exports = function (files, settings, callback) {
     conf.message = '[fis-deploy-git] commit ${__timestamp__}';
     conf.branch= conf.branch || 'master';
 
-    var tmp = os.tmpdir() + path.sep + 'fis_deploy_git_' + conf.remote.replace(/\/\/(.*):(.*)@/,'').replace(/[:\/\\\.]+/g,'_') ;
+    var tmp = fis.project.getTempPath() + path.sep + 'fis_deploy_git_' + conf.remote.replace(/\/\/(.*):(.*)@/,'').replace(/[:\/\\\.]+/g,'_') ;
 
     if(fis.util.exists(tmp) && !fis.util.isDir(tmp)){
         fis.log.error('dir['+ tmp + ']: invalid tmp dir.');
